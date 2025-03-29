@@ -1,31 +1,351 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Webpage</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
+<!--
+  This is the DOCTYPE declaration which tells the browser that this is an HTML5 document.
+-->
+<html data-build="prod-9e908f37333f4e4f638bc5a3c2705574b9702864" dir="ltr">
+  <head>
+    <!-- Basic meta tags for character set and responsive design -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Preconnect hints to speed up connections to external domains -->
+    <link rel="preconnect" href="https://cdn.oaistatic.com" />
+    <link rel="preconnect" href="https://ab.chatgpt.com" />
+
+    <!-- Meta tags for search engine indexing and content type -->
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Meta for Apple iTunes App association -->
+    <meta name="apple-itunes-app" content="app-id=6448311069" />
+
+    <!-- Some additional meta tags (e.g., for logging/tracing) -->
+    <meta name="dd-trace-id" content="2590950058388842104" />
+    <meta name="dd-trace-time" content="1742772199691" />
+
+    <!-- Favicon and apple-touch icons -->
+    <link rel="icon" href="https://cdn.oaistatic.com/assets/favicon-miwirzcw.ico" sizes="32x32" />
+    <!-- Inline SVG favicon as fallback -->
+    <link rel="icon" href="data:image/svg+xml,%3csvg%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20width=&#x27;180&#x27;%20height=&#x27;180&#x27;%20fill=&#x27;none&#x27;%3e%3cstyle%3e%20:root%20{%20--primary-fill:%20%23000;%20--secondary-fill:%20%23fff;%20}%20@media%20(prefers-color-scheme:%20dark)%20{%20:root%20{%20--primary-fill:%20%23fff;%20--secondary-fill:%20%23000;%20}%20}%20%3c/style%3e%3cg%20clip-path=&#x27;url(%23a)&#x27;%3e%3crect%20width=&#x27;180&#x27;%20height=&#x27;180&#x27;%20fill=&#x27;var(--primary-fill)&#x27;%20rx=&#x27;90&#x27;%20/%3e%3cg%20clip-path=&#x27;url(%23b)&#x27;%3e%3cpath%20fill=&#x27;var(--secondary-fill)&#x27;%20d=&#x27;...&#x27;%20/%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id=&#x27;a&#x27;%3e%3cpath%20fill=&#x27;var(--primary-fill)&#x27;%20d=&#x27;M0%200h180v180H0z&#x27;%20/%3e%3c/clipPath%3e%3cclipPath%20id=&#x27;b&#x27;%3e%3cpath%20fill=&#x27;var(--primary-fill)&#x27;%20d=&#x27;M29.487%2029.964h121.035v119.954H29.487z&#x27;%20/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" type="image/svg+xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.oaistatic.com/assets/favicon-180x180-od45eci6.webp" />
+
+    <!-- Page title -->
+    <title>ChatGPT</title>
+
+    <!-- Meta description and keywords for SEO -->
+    <meta name="description" content="ChatGPT helps you get answers, find inspiration and be more productive. It is free to use and easy to try. Just ask and ChatGPT can help with writing, learning, brainstorming and more." />
+    <meta name="keyword" content="ai chat,ai,chap gpt,chat gbt,chat gpt 3,chat gpt login,chat gpt website,chat gpt,chat gtp,chat openai,chat,chatai,chatbot gpt,chatg,chatgpt login,chatgpt,gpt chat,open ai,openai chat,openai chatgpt,openai" />
+
+    <!-- Open Graph meta tags for social sharing -->
+    <meta property="og:description" content="A conversational AI system that listens, learns, and challenges" />
+    <meta property="og:title" content="ChatGPT" />
+    <meta property="og:image" content="https://cdn.oaistatic.com/assets/chatgpt-share-og-u7j5uyao.webp" />
+    <meta property="og:url" content="https://chatgpt.com" />
+
+    <!-- Preloading external JavaScript modules (removed API calls) -->
+    <!-- Original modulepreload links are left here for structure but are not required for core UI functionality -->
+    <link rel="modulepreload" href="https://cdn.oaistatic.com/assets/manifest-80f9c0bb.js" />
+    <!-- (Other modulepreload links omitted for brevity) -->
+
+    <!-- Link to external CSS stylesheets -->
+    <link rel="stylesheet" href="https://cdn.oaistatic.com/assets/root-nc08w1k6.css" />
+    <link rel="stylesheet" href="https://cdn.oaistatic.com/assets/conversation-small-j0s4rn2b.css" />
+
+    <!-- Inline script for a polyfill related to scroll timelines -->
+    <script nonce="6ac6f951-5df7-4663-b494-15caab1dfa0c">
+      // This script checks if the browser supports the 'animation-timeline' CSS property.
+      // If not, it sets up event listeners to polyfill the functionality.
+      (function initScrollTimelineInline() {
+        try {
+          if (CSS.supports("animation-timeline: --works")) return;
+          var animationMap = new Map();
+          document.addEventListener("animationstart", (event) => {
+            if (!(event.target instanceof HTMLElement)) return;
+            const animations = event.target.getAnimations().filter(anim => anim.animationName === event.animationName);
+            animationMap.set(event.target, animations);
+          });
+          document.addEventListener("scrolltimelineload", (event) => {
+            animationMap.forEach((animations, element) => {
+              animations.forEach(anim => {
+                event.detail.upgradeAnimation(anim, element);
+              });
+            });
+            animationMap.clear();
+          }, { once: true });
+        } catch (e) {
+          // Handle any errors silently
         }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: blue;
-            color: white;
-            border: none;
-            cursor: pointer;
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- Inline script to set the UI theme based on local storage or system preference -->
+    <script>
+      (function() {
+        try {
+          var docElem = document.documentElement;
+          var classList = docElem.classList;
+          // Remove any existing theme classes
+          classList.remove('light', 'dark');
+          // Retrieve stored theme value (if any)
+          var theme = localStorage.getItem('theme');
+          if (theme === 'system' || (!theme && true)) {
+            var mediaQuery = '(prefers-color-scheme: dark)';
+            var m = window.matchMedia(mediaQuery);
+            if (m.media !== mediaQuery || m.matches) {
+              // Set dark theme if system prefers dark
+              docElem.style.colorScheme = 'dark';
+              classList.add('dark');
+            } else {
+              // Otherwise, use light theme
+              docElem.style.colorScheme = 'light';
+              classList.add('light');
+            }
+          } else if (theme) {
+            // Apply the stored theme directly
+            classList.add(theme);
+          }
+          if (theme === 'light' || theme === 'dark') docElem.style.colorScheme = theme;
+        } catch (e) {
+          // Fail silently if any error occurs
         }
-        button:hover {
-            background-color: darkblue;
-        }
-    </style>
-</head>
-<body>
-    <h1>Welcome to My Simple Webpage</h1>
-    <p>This is a basic HTML page with a styled button.</p>
-    <button onclick="alert('Button Clicked!')">Click Me</button>
-</body>
+      })();
+    </script>
+
+    <!-- Main container for the chat interface -->
+    <div class="flex h-full w-full flex-col">
+      <div class="relative flex h-full w-full flex-1 overflow-hidden transition-colors z-0">
+        <div class="relative flex h-full w-full flex-row overflow-hidden">
+          <div class="relative flex h-full max-w-full flex-1 flex-col overflow-hidden">
+            <main class="relative h-full w-full flex-1 overflow-auto transition-width">
+              <div class="h-full w-full @container/thread">
+                <!-- Chat composer parent container -->
+                <div role="presentation" class="composer-parent flex h-full flex-col focus-visible:outline-0">
+                  <!-- Top bar with chat actions and navigation -->
+                  <div class="draggable no-draggable-children top-0 p-3 flex items-center justify-between z-10 h-header-height font-semibold bg-token-main-surface-primary pointer-events-none select-none ..."
+                       style="[box-shadow:var(--sharp-edge-top-shadow-placeholder)]">
+                    <!-- Centered placeholder (could be used for branding or spacing) -->
+                    <div class="absolute start-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2"></div>
+                    <!-- Left side with new chat button and model switcher -->
+                    <div class="flex items-center gap-0 overflow-hidden">
+                      <div class="flex items-center">
+                        <span class="hidden"></span>
+                        <span class="flex" data-state="closed">
+                          <!-- Button for starting a new chat -->
+                          <button aria-label="New chat" class="h-10 rounded-lg px-2 text-token-text-secondary focus-visible:bg-token-surface-hover focus-visible:outline-0 enabled:hover:bg-token-surface-hover disabled:text-token-text-quaternary">
+                            <!-- SVG icon for new chat -->
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="icon-xl-heavy">
+                              <path d="M15.6729 3.91287C16.8918 2.69392 18.8682 2.69392 20.0871 3.91287C21.3061 5.13182 21.3061 7.10813 20.0871 8.32708L14.1499 14.2643C13.3849 15.0293 12.3925 15.5255 11.3215 15.6785L9.14142 15.9899C8.82983 16.0344 8.51546 15.9297 8.29289 15.7071C8.07033 15.4845 7.96554 15.1701 8.01005 14.8586L8.32149 12.6785C8.47449 11.6075 8.97072 10.615 9.7357 9.85006L15.6729 3.91287Z"></path>
+                            </svg>
+                          </button>
+                        </span>
+                      </div>
+                      <!-- Model switcher button (displays current model name) -->
+                      <button aria-label="" style="view-transition-name:var(--vt-thread-model-switcher)" class="group flex cursor-pointer items-center gap-1 rounded-lg py-1.5 px-3 text-lg hover:bg-token-main-surface-secondary radix-state-open:bg-token-main-surface-secondary font-semibold text-token-text-secondary overflow-hidden whitespace-nowrap">
+                        <div class="text-token-text-secondary">ChatGPT</div>
+                        <!-- SVG arrow indicating dropdown -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-md text-token-text-tertiary">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 9.29289C5.68342 8.90237 6.31658 8.90237 6.70711 9.29289L12 14.5858L17.2929 9.29289C17.6834 8.90237 18.3166 8.90237 18.7071 9.29289C19.0976 9.68342 19.0976 10.3166 18.7071 10.7071L12.7071 16.7071C12.5196 16.8946 12.2652 17 12 17C11.7348 17 11.4804 16.8946 11.2929 16.7071L5.29289 10.7071C4.90237 10.3166 4.90237 9.68342 5.29289 9.29289Z"></path>
+                        </svg>
+                      </button>
+                    </div>
+                    <!-- Right side with login and signup buttons -->
+                    <div class="flex items-center gap-2 pr-1 leading-[0]">
+                      <div class="flex items-center justify-center gap-2">
+                        <button class="btn relative btn-primary" data-testid="login-button">
+                          <div class="flex items-center justify-center">Log in</div>
+                        </button>
+                        <button class="btn relative btn-secondary screen-arch:hidden md:screen-arch:flex" data-testid="signup-button">
+                          <div class="flex items-center justify-center">Sign up</div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Main conversation area and chat content -->
+                  <div class="flex flex-1 grow basis-auto flex-col overflow-hidden">
+                    <div class="text-base my-auto mx-auto px-3 md:px-4 w-full md:px-5 lg:px-4 xl:px-5 h-full">
+                      <div class="mx-auto mt-0 flex h-full w-full flex-col text-base @lg/thread:justify-center @md/thread:max-w-3xl relative">
+                        <!-- Splash screen headline (visible on larger screens) -->
+                        <div class="hidden text-center @lg/thread:block mb-5">
+                          <div class="relative inline-flex justify-center text-center text-2xl font-semibold leading-9">
+                            <div style="view-transition-name:var(--vt-splash-screen-headline)">
+                              <div class="grid min-h-[74px] grid-cols-1 items-center justify-end">
+                                <h1 class="flex h-full items-end justify-center text-[28px] font-semibold leading-[34px] tracking-[0.38px]">What can I help with?</h1>
+                                <!-- Hidden temporary chat info section -->
+                                <div class="flex h-full flex-col items-center justify-end invisible">
+                                  <div class="mb-5 text-2xl font-semibold" data-testid="temporary-chat-label">
+                                    <input class="sr-only" type="checkbox" readOnly name="temporary-chat-checkbox" checked />Temporary Chat
+                                  </div>
+                                  <div class="text-center font-normal max-w-sm text-sm text-token-text-tertiary">
+                                    This chat won't appear in history or be used to train our models. For safety purposes, we may keep a copy of this chat for up to 30 days.
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Splash screen for compact displays -->
+                        <div class="mt-[var(--screen-optical-compact-offset-amount)] flex-shrink flex-col items-center justify-center overflow-hidden text-token-text-primary" style="opacity:0;">
+                          <div class="relative inline-flex justify-center text-center text-2xl font-semibold leading-9">
+                            <div style="view-transition-name:var(--vt-splash-screen-headline)">
+                              <div class="grid min-h-[74px] grid-cols-1 items-center justify-end">
+                                <h1 class="flex h-full items-end justify-center text-[28px] font-semibold leading-[34px] tracking-[0.38px]">What can I help with?</h1>
+                                <div class="flex h-full flex-col items-center justify-end invisible">
+                                  <div class="mb-5 text-2xl font-semibold" data-testid="temporary-chat-label">
+                                    <input class="sr-only" type="checkbox" readOnly name="temporary-chat-checkbox" checked />Temporary Chat
+                                  </div>
+                                  <div class="text-center font-normal max-w-sm text-sm text-token-text-tertiary">
+                                    This chat won't appear in history or be used to train our models. For safety purposes, we may keep a copy of this chat for up to 30 days.
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="h-[116px]" style="opacity:0;"></div>
+                        </div>
+
+                        <!-- Area reserved for additional UI components -->
+                        <div class="@lg/thread:absolute @lg/thread:bottom-8 @lg/thread:left-0 @lg/thread:w-full">
+                          <div class="text-base mx-auto px-3 md:px-4 w-full md:px-5 lg:px-4 xl:px-5">
+                            <div class="mx-auto mt-0 flex h-full w-full flex-col text-base @lg/thread:justify-center @md/thread:max-w-3xl relative">
+                              <div class="block z-20"></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Chat input form -->
+                        <div class="w-full">
+                          <div class="flex justify-center empty:hidden"></div>
+                          <form class="w-full" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="dialog-id">
+                            <div class="relative z-[1] flex h-full max-w-full flex-1 flex-col">
+                              <div class="group relative z-[1] flex w-full items-center">
+                                <div class="w-full">
+                                  <!-- Background container for chat composer with rounded corners and borders -->
+                                  <div id="composer-background" style="view-transition-name:var(--vt-composer)" class="flex w-full cursor-text flex-col overflow-clip rounded-t-3xl border-t border-token-border-light bg-token-main-surface-primary dark:bg-[#303030] rounded-b-3xl border-b">
+                                    <div class="px-3 py-1">
+                                      <div class="flex flex-col justify-start" style="min-height:0">
+                                        <div class="flex min-h-[44px] items-start pl-1">
+                                          <div class="min-w-0 max-w-full flex-1">
+                                            <!-- Text area for user to type their message -->
+                                            <div class="_prosemirror-parent_11fu7_1 text-token-text-primary max-h-[25dvh] max-h-52 overflow-auto">
+                                              <textarea class="block h-10 w-full resize-none border-0 bg-transparent px-0 py-2 text-token-text-primary placeholder:text-token-text-tertiary" autofocus placeholder="Ask anything" data-virtualkeyboard="true"></textarea>
+                                              <script nonce="6ac6f951-5df7-4663-b494-15caab1dfa0c">
+                                                // Removed performance logging API call for a faster, safer execution.
+                                              </script>
+                                            </div>
+                                          </div>
+                                          <div class="w-[32px] pt-1"></div>
+                                        </div>
+                                      </div>
+                                      <!-- Attach file and other action buttons -->
+                                      <div class="mb-2 mt-1 flex items-center justify-between sm:mt-5">
+                                        <div class="flex gap-x-1.5 text-token-text-primary">
+                                          <div style="view-transition-name:var(--vt-composer-attach-file-action)">
+                                            <div class="relative">
+                                              <div class="relative">
+                                                <span class="hidden"></span>
+                                                <span data-state="closed">
+                                                  <!-- Button for uploading files (action disabled) -->
+                                                  <div class="flex" type="button" id="attach-menu" aria-haspopup="menu" aria-expanded="false" data-state="closed">
+                                                    <button aria-label="Upload files and more" class="flex items-center justify-center h-9 rounded-full border border-token-border-light text-token-text-secondary p-2 text-[13px] font-semibold">
+                                                      <!-- SVG icon for file attachment -->
+                                                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 7C9 4.23858 11.2386 2 14 2C16.7614 2 19 4.23858 19 7V15C19 18.866 15.866 22 12 22C8.13401 22 5 18.866 5 15V9C5 8.44772 5.44772 8 6 8C6.55228 8 7 8.44772 7 9V15C7 17.7614 9.23858 20 12 20C14.7614 20 17 17.7614 17 15V7C17 5.34315 15.6569 4 14 4C12.3431 4 11 5.34315 11 7V15C11 15.5523 11.4477 16 12 16C12.5523 16 13 15.5523 13 15V9C13 8.44772 13.4477 8 14 8C14.5523 8 15 8.44772 15 9V15C15 16.6569 13.6569 18 12 18C10.3431 18 9 16.6569 9 15V7Z" fill="currentColor"></path>
+                                                      </svg>
+                                                      <span class="pl-1 pr-1">Attach</span>
+                                                    </button>
+                                                    <!-- Hidden file input element (disabled) -->
+                                                    <input accept="" multiple type="file" style="display:none" tabindex="-1" class="hidden" />
+                                                  </div>
+                                                </span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="flex gap-x-1.5">
+                                        <!-- Send button for the chat message -->
+                                        <div class="min-w-9">
+                                          <button class="relative flex h-9 items-center justify-center rounded-full bg-black text-white w-9">
+                                            <!-- SVG icon for sending message -->
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                              <path d="M9.5 4C8.67157 4 8 4.67157 8 5.5V18.5C8 19.3284 8.67157 20 9.5 20C10.3284 20 11 19.3284 11 18.5V5.5C11 4.67157 10.3284 4 9.5 4Z" fill="currentColor"></path>
+                                              <path d="M13 8.5C13 7.67157 13.6716 7 14.5 7C15.3284 7 16 7.67157 16 8.5V15.5C16 16.3284 15.3284 17 14.5 17C13.6716 17 13 16.3284 13 15.5V8.5Z" fill="currentColor"></path>
+                                              <path d="M4.5 9C3.67157 9 3 9.67157 3 10.5V13.5C3 14.3284 3.67157 15 4.5 15C5.32843 15 6 14.3284 6 13.5V10.5C6 9.67157 5.32843 9 4.5 9Z" fill="currentColor"></path>
+                                              <path d="M19.5 9C18.6716 9 18 9.67157 18 10.5V13.5C18 14.3284 18.6716 15 19.5 15C20.3284 15 21 14.3284 21 13.5V10.5C21 9.67157 20.3284 9 19.5 9Z" fill="currentColor"></path>
+                                            </svg>
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- Spacer element for layout balance -->
+                        <div class="hidden min-h-[108px] max-w-full @lg/thread:block h-[70px]" style="opacity:0;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Footer: Terms and Privacy Policy notice -->
+                <div class="isolate w-full basis-auto">
+                  <div class="relative mt-auto flex min-h-8 w-full items-center justify-center p-2 text-center text-xs text-token-text-secondary">
+                    <span class="text-sm leading-none">
+                      By messaging ChatGPT, you agree to our
+                      <a href="https://openai.com/terms" target="_blank" class="text-token-text-primary underline" rel="noreferrer">Terms</a>
+                      and have read our
+                      <a href="https://openai.com/privacy" target="_blank" class="text-token-text-primary underline" rel="noreferrer">Privacy Policy</a>.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+          <!-- Optional right-side floating elements (if any) -->
+          <div class="group absolute bottom-2 end-2 z-20 flex flex-col gap-1"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hidden live regions for screen readers -->
+    <div aria-live="assertive" aria-atomic="true" class="sr-only"></div>
+    <div aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+    <!-- Hidden audio element (likely for notification sounds) -->
+    <audio class="fixed bottom-0 left-0 hidden h-0 w-0" autoplay crossorigin="anonymous"></audio>
+
+    <!-- Inline script setting up React Router context (removed streaming/API calls) -->
+    <script nonce="6ac6f951-5df7-4663-b494-15caab1dfa0c">
+      // Removed external API calls and streaming logic for React Router.
+      window.__reactRouterContext = {
+        "basename": "/",
+        "future": {
+          "unstable_optimizeDeps": false
+        },
+        "isSpaMode": false
+      };
+      // Removed: Streaming and text encoding logic.
+    </script>
+
+    <!-- Inline script for loading external modules (all external module imports are disabled) -->
+    <script nonce="6ac6f951-5df7-4663-b494-15caab1dfa0c" type="module" async>
+      // All external module imports have been removed for safe, offline execution.
+      // Original code that imported modules from https://cdn.oaistatic.com/assets/ has been disabled.
+    </script>
+
+    <!-- Template and hidden elements for future use -->
+    <template id="B:0"></template>
+    <div hidden id="S:0">
+      <!-- Removed inline script content that contained API data and context streaming -->
+      <script nonce="6ac6f951-5df7-4663-b494-15caab1dfa0c">
+        // Removed: React Router streaming inline script content.
+      </script>
+    </div>
+  </body>
 </html>
